@@ -1,46 +1,199 @@
-body {
-    background-color: rgba(21, 19, 27, 0.697);
-    font-family: "Press Start 2P", cursive;
-h1 {
-    color: #ffc04d;}
-    text-align: center;
- 
-
-    p{
-        color: #d5d5dd;}
-        font-size: 20px;
+/* Make padding and borders count inside an element's width,
+   so width: 100% plus padding no longer overflows the screen. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  padding: 0 24px 40px;
+  background-color: rgba(21, 19, 27, 0.697);
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+}
+
+h1 {
+  color: #ffc04d;
+}
+
+h2,
+h3 {
+  color: #ffffff;
+}
+
+p {
+  color: #d5d5dd;
+  font-size: 20px;
+}
+
+/* Images never grow wider than their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+nav a {
+  color: #ffc04d;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #ffc04d;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: #ffc04d;
+  color: #15131b;
+}
+
+/* ---------- Home page cards ---------- */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .card {
-    background-color: rgba(19, 1, 98, 0.697);
-    border: 1px solid #010130;
+  background-color: rgba(19, 1, 98, 0.697);
+  border: 1px solid #010130;
   padding: 10px 18px;
+  border-radius: 6px;
+}
+
+.card-header {
+  font-size: 40px;
+  padding-top: 10px;
+}
+
+.card-body a {
+  display: inline-block;
+  margin: 8px 0 12px;
+  padding: 10px 18px;
+  color: #ffc04d;
+  text-decoration: none;
+  border: 2px solid #ffc04d;
   border-radius: 6px;
 }
 
 .card-body a:hover {
   background: #ffc04d;
+  color: #15131b;
 }
+
+/* ---------- Votes page ---------- */
 .teams {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .teams .card {
   width: 100%;
-  max-width: none;        /* removes the old width limit */
-  flex: none;             /* cancels the old flex sizing */
-  float: none;
   margin: 0;
   padding: 20px;
   text-align: center;
+}
+
+.teams ol {
+  display: inline-block;
+  text-align: left;
+  color: #d5d5dd;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .teams .card img {
   display: block;
   width: 100%;
   height: 400px;
-  object-fit: cover;      /* crops the image instead of stretching it */
+  object-fit: cover; /* crops the image instead of stretching it */
+}
+
+footer p {
+  font-size: 14px;
+}
+
+/* ---------- Contact page form ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #d5d5dd;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* ---------- Small screens: 600px wide or narrower ---------- */
+@media (max-width: 600px) {
+  body {
+    padding: 0 16px 32px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* Stack the nav links as full-width buttons that are easy to tap */
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    text-align: center;
+    padding: 14px;
+  }
+
+  /* One card per row */
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card-body a {
+    display: block;
+  }
+
+  /* Shorter photo so it doesn't fill the whole phone screen */
+  .teams .card {
+    padding: 16px;
+  }
+
+  .teams .card img {
+    height: 220px;
+  }
+
+  form input[type="text"],
+  form input[type="email"] {
+    max-width: none;
+  }
 }
